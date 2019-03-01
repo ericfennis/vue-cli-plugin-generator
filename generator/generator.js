@@ -8,16 +8,19 @@ const getNamings = string => ({
 })
 
 module.exports = (api, options) => {
+
   const generatorConfig = require(api.resolve('generator.config.js'));
   const templateObject = generatorConfig.templates.filter(template => template.name === options.type)[0];
   
   const templateFolderLocation = '.generator/templates/';
 
   let files = {};
+  let name = templateObject.name;
 
   //Set namings
   if(options.hasOwnProperty('name')) {
     options.name = getNamings(options.name);
+    name = options.name;
   }
 
   Object.keys(templateObject.template).forEach(target => {
@@ -28,9 +31,7 @@ module.exports = (api, options) => {
 
   });
   
-  
   api.render(files, {
     ...options
   });
-  
 }

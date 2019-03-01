@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-generator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A Vue CLI plugin to scaffold Components, views and more.",
   "main": "index.js",
   "repository": "git@github.com:ericfennis/vue-cli-plugin-generator.git",
