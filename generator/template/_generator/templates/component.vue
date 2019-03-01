@@ -1,19 +1,20 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ message }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: '<%%= name.pascalCase %%>',
-  props: {
-    msg: String
+  data() {
+    return {
+      message: 'Hello World!'
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <%% if (scoped) { %%>
 <style scoped>
 <%% } else { %%>
