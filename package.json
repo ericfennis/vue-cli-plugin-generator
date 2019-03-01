@@ -2,10 +2,30 @@
   "name": "vue-cli-plugin-generator",
   "version": "1.0.0",
   "description": "A Vue CLI plugin to scaffold Components, views and more.",
-  "main": "index.js",
-  "repository": "git@github.com:ericfennis/vue-cli-plugin-generator.git",
   "author": "Eric Fennis <eric.fennis@gmail.com>",
+  "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericfennis/vue-cli-plugin-structure-generator.git"
+  },
+  "keywords": [
+    "generator",
+    "components",
+    "scaffolding",
+    "template",
+    "generate",
+    "vue",
+    "CLI",
+    "ejs"
+  ],
+  "bugs": {
+    "url": "https://github.com/ericfennis/vue-cli-plugin-structure-generator/issues"
+  },
+  "homepage": "https://github.com/ericfennis/vue-cli-plugin-structure-generator#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "lodash": "^4.17.11"
   }
