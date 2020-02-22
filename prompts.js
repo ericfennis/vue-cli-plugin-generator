@@ -26,17 +26,15 @@ module.exports = api => {
       }
     ));
 
-
     const allPromptsFromConfig = generatorConfig.templates.map(type => type.prompts)
 
     let customPrompts = [];
 
-    if (allPromptsFromConfig.length >= 0) {
+    if (allPromptsFromConfig && allPromptsFromConfig.length) {
       customPrompts = [].concat.apply([],allPromptsFromConfig);
     } else {
-      customPrompts = null;
+      customPrompts = [];
     }
-
 
     questions = [
       {
