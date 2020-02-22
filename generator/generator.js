@@ -8,11 +8,12 @@ const getNamings = string => ({
 })
 
 module.exports = (api, options) => {
+  const generatorConfig = require(api.resolve('generator.config.js')) || require(api.resolve('.generator/generator.config.js'));
+
   if (!(generatorConfig && generatorConfig.templates)) {
     throw 'No Template file found';
   }
 
-  const generatorConfig = require(api.resolve('generator.config.js'));
   const templateObject = generatorConfig.templates.find(template => template.name === options.type);
   
   const templateFolderLocation = '.generator/templates/';
@@ -30,7 +31,7 @@ module.exports = (api, options) => {
 
       const resolveTemplateFile = api.resolve(templateFolderLocation + templateObject.template[target]);
 
-      files[[`${target}`]] = `${resolveTemplateFile}`;
+      files[[eval('`'+target+'`')]] = eval('`'+resolveTemplateFile+'`');
 
     });
     
