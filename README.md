@@ -33,7 +33,7 @@ module.exports = {
       },
       renameFile: true, // can be true || false
       prompts: [
-        // Config your custom qeustions
+        // Config your custom questions
         {
           type: 'confirm',
           name: 'scoped',
