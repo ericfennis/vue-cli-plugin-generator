@@ -2,8 +2,6 @@
 
 Vue CLI Plugin Generator is a Vue ClI plugin to generate (.vue)files in your project. For Example for scaffolding Vue Component files. The Plugin uses the buildin plugin generator of Vue CLI.
 
-> Still in Alpha!
-
 ## Getting Started
 
 Install the package:
