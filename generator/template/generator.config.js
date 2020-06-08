@@ -4,6 +4,7 @@ module.exports = {
       name: 'component',
       label: 'Component',
       template: {
+        // eslint-disable-next-line no-template-curly-in-string
         ['./src/components/${name.pascalCase}.vue']: 'component.vue'
       },
       renameFile: true, // Rename file question
