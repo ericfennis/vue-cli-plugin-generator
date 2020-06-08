@@ -15,17 +15,20 @@ module.exports = api => {
     ));
 
     // Check if file need to be renamed
-    renameFileQuestion = generatorConfig.templates.filter(type => type.renameFile).map(type => (
-      {
-        type: 'input',
-        name: 'name',
-        message: `Name for the ${type.label}?`,
-        group: `${type.name}`,
-        validate: input => !!input,
-        when: answers => answers.type === `${type.name}`,
-      }
-    ));
+    let renameFileQuestion = generatorConfig.templates.filter(type => type.renameFile);
 
+    if(renameFileQuestion.length) {
+      renameFileQuestion = renameFileQuestion.map(type => (
+        {
+          type: 'input',
+          name: 'name',
+          message: `Name for the ${type.label}?`,
+          group: `${type.name}`,
+          validate: input => !!input,
+          when: answers => answers.type === `${type.name}`,
+        }
+      ));
+    }
 
     const allPromptsFromConfig = generatorConfig.templates.map(type => type.prompts)
 
