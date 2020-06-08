@@ -1,6 +1,6 @@
 # Vue CLI Plugin Generator
 
-Vue CLI Plugin Generator is a Vue ClI plugin to generate files in your project. For Example for scaffolding Vue Component files. The Plugin use the buildin plugin generator of Vue CLI.
+Vue CLI Plugin Generator is a Vue ClI plugin to generate (.vue)files in your project. For Example for scaffolding Vue Component files. The Plugin uses the buildin plugin generator of Vue CLI.
 
 > Still in Alpha!
 
@@ -18,7 +18,7 @@ yarn make
 
 ## Configure your template
 
-To config the generator, you can use the `generator.config.js` in the root of the folder. 
+To config the generator, you can use the `generator.config.js` in the root of the folder.
 
 ```javascript
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
       },
       renameFile: true, // can be true || false
       prompts: [
-        // Config your custom qeustions
+        // Config your custom questions
         {
           type: 'confirm',
           name: 'scoped',
@@ -50,13 +50,11 @@ module.exports = {
 
 In the `.generator/templates`folder you can place your templates for the generator. For example your Vue component.
 
-
-
 ## Templating files
 
 The questions that are defined in the `generator.config.js`you can use to generate you templates. name`key in the questions you can use in the template files. For example the qeustion: Scoped styling. With [EJS](https://ejs.co/) used by Vue CLI you can make for example If-statements to generate part of your template.
 
-```
+``` vue
 <template>
   <div class="hello">
     <h1>{{ message }}</h1>
@@ -95,8 +93,6 @@ a {
 }
 </style>
 ```
-
-
 
 ## Issues
 

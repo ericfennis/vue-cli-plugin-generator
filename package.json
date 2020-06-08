@@ -1,13 +1,13 @@
 {
   "name": "vue-cli-plugin-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue CLI plugin to scaffold Components, views and more.",
   "author": "Eric Fennis <eric.fennis@gmail.com>",
   "main": "index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ericfennis/vue-cli-plugin-structure-generator.git"
+    "url": "https://github.com/ericfennis/vue-cli-plugin-generator.git"
   },
   "keywords": [
     "generator",
@@ -20,13 +20,16 @@
     "ejs"
   ],
   "bugs": {
-    "url": "https://github.com/ericfennis/vue-cli-plugin-structure-generator/issues"
+    "url": "https://github.com/ericfennis/vue-cli-plugin-generator/issues"
   },
-  "homepage": "https://github.com/ericfennis/vue-cli-plugin-structure-generator#readme",
+  "homepage": "https://github.com/ericfennis/vue-cli-plugin-generator#readme",
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
+  "dependencies": {
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.2.2"
   }
 }
