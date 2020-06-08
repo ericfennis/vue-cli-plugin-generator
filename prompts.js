@@ -3,55 +3,58 @@ const path = require('path');
 let questions = [];
 
 module.exports = api => {
-  if(api.scripts.hasOwnProperty('make')) {
+  if(api.scripts.make) {
     const generatorConfig = require(path.resolve(process.cwd()+'/generator.config.js'));
 
-    // Get all template types
-    const types = generatorConfig.templates.map(type => (
-      {
-        name: type.label,
-        value: type.name,
-      }
-    ));
-
-    // Check if file need to be renamed
-    let renameFileQuestion = generatorConfig.templates.filter(type => type.renameFile);
-
-    if(renameFileQuestion.length) {
-      renameFileQuestion = renameFileQuestion.map(type => (
+    if(generatorConfig) {
+      
+      const types = generatorConfig.templates.map(type => (
         {
-          type: 'input',
-          name: 'name',
-          message: `Name for the ${type.label}?`,
-          group: `${type.name}`,
-          validate: input => !!input,
-          when: answers => answers.type === `${type.name}`,
+          name: type.label,
+          value: type.name,
         }
       ));
-    }
+      
+      // Check if file need to be renamed
+      let renameFileQuestion = generatorConfig.templates.filter(type => type && type.renameFile);
 
-    const allPromptsFromConfig = generatorConfig.templates.map(type => type.prompts)
+      if(renameFileQuestion.length) {
+        renameFileQuestion = renameFileQuestion.map(type => (
+          {
+            type: 'input',
+            name: 'name',
+            message: `Name for the ${type.label}?`,
+            group: `${type.name}`,
+            validate: input => !!input,
+            when: answers => answers.type === `${type.name}`,
+          }
+        ));
+      }
+      const hasCustomPrompts = generatorConfig.templates.some(type => type.prompts);
+      const allPromptsFromConfig = generatorConfig.templates.map(type => type.prompts)
 
-    let customPrompts = [];
+      let customPrompts = [];
 
-    if (allPromptsFromConfig && allPromptsFromConfig.length) {
-      customPrompts = [].concat.apply([],allPromptsFromConfig);
+      if (hasCustomPrompts && allPromptsFromConfig && allPromptsFromConfig.length) {
+        customPrompts = [].concat.apply([],allPromptsFromConfig);        
+      }
+
+      questions = [
+        {
+          type: 'list',
+          name: 'type',
+          message: 'What do you want to generate?',
+          choices: [
+            ...types
+          ],
+        },
+        ...renameFileQuestion,
+        ...customPrompts
+      ]
     } else {
-      customPrompts = [];
+      throw 'No `generator.config.js` in you root folder.';
     }
-
-    questions = [
-      {
-        type: 'list',
-        name: 'type',
-        message: 'What do you want to generate?',
-        choices: [
-          ...types
-        ],
-      },
-      ...renameFileQuestion,
-      ...customPrompts
-    ]
   }
+  
   return questions;
 }
